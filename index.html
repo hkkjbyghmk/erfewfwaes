@@ -56,9 +56,10 @@
             border-radius: 8px;
             overflow: hidden;
             flex: 1;
+			min-width: 250px;
         }
         .small-table {
-            flex: 0.5;
+            flex: 1;
         }
         th, td {
             border: 1px solid #000000;
@@ -131,7 +132,57 @@
             margin-left: 155px;
             color: #ffffff
         }
+	/* Media Queries for Responsiveness */
+	@media (max-width: 768px) {
+		.clock,
+		.timer {
+			position: static;
+			text-align: center;
+			margin-bottom: 10px;
+		}
 
+		h1 {
+			font-size: 20px;
+		}
+
+		.tables-container {
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.toggle-button {
+			font-size: 14px;
+			padding: 6px 10px;
+		}
+
+		.input-container input {
+			width: 100%;
+			margin-bottom: 10px;
+		}
+
+		.input-container button {
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.clock {
+			font-size: 16px;
+		}
+
+		.timer {
+			font-size: 12px;
+		}
+
+		th, td {
+			padding: 8px;
+			font-size: 14px;
+		}
+
+		.numeric-input-container label {
+			margin-left: 0; /* Adjust label margin */
+		}
+	}
 
         
     </style>
