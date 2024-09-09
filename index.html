@@ -115,15 +115,16 @@
             cursor: pointer;
         }
         .numeric-input-container {
-            height: 50px;
+            height: 110px;
             margin-top: 20px;
-            text-align: right;
+            text-align: left;
             filter: blur(80%);
             color: #ffffff
         }
         .numeric-input-container input {
-            height: 15px;
-            width: 90px;
+            height: 20px;
+            width: 150px;
+            margin: 5px;
             padding: 6px;
             font-size: 13px;
             border-radius: 12px;
@@ -135,6 +136,28 @@
             margin-left: 155px;
             color: #ffffff
         }
+
+        .animated-line {
+            width: 100%; /* A linha ocupa 100% da largura do contêiner pai */
+            height: 10px; /* Altura da linha */
+            background: linear-gradient(90deg, #5238bc, #ffffff, #FFFF00, #5238bc, #ffffff, #FFFF00);
+            background-size: 200% 100%;
+            animation: wave-line 5s ease-in-out infinite;
+        }
+
+        /* Animação com @keyframes */
+        @keyframes wave-line {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 0%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
 	/* Media Queries for Responsiveness */
 	@media (max-width: 768px) {
 		.clock,
@@ -452,30 +475,37 @@
     
     <!-- Novo bloco para o campo de entrada numérico -->
     <div class="numeric-input-container">
-        <label for="eur-input">EUR:</label>
+        <div class="animated-line"></div>
+        <label for="eur-input"><br>EUR:</label>
         <input type="number" id="eur-input" placeholder="Digite aqui" step="0.01" min="0" />
         <span id="eur-result">00.00AOA</span>
-        <label for="eur-buy-input">EUR:</label>
-        <input type="number" id="eur-buy-input" placeholder="Digite aqui" step="0.01" min="0" />
-        <span id="eur-buy-result">00.00AOA<br></span>
-    </div>
-
-    <div class="numeric-input-container">
-        <label for="usd-input">USD:</label>
+        <label for="usd-input"><br>USD:</label>
         <input type="number" id="usd-input" placeholder="Digite aqui" step="0.01" min="0" />
         <span id="usd-result">00.00AOA</span>
-        <label for="usd-buy-input">USD:</label>
+        <label for="brl-input"><br>BRL:</label>
+        <input type="number" id="brl-input" placeholder="Digite aqui" step="0.01" min="0" />
+        <span id="brl-result">00.00AOA</span>
+        <div class="animated-line"></div>
+    </div>
+
+
+
+
+
+    <div class="numeric-input-container">
+        <label for="eur-buy-input"><br><br>EUR:</label>
+        <input type="number" id="eur-buy-input" placeholder="Digite aqui" step="0.01" min="0" />
+        <span id="eur-buy-result">00.00AOA</span>
+        <label for="usd-buy-input"><br>USD:</label>
         <input type="number" id="usd-buy-input" placeholder="Digite aqui" step="0.01" min="0" />
-        <span id="usd-buy-result">00.00AOA<br></span>
+        <span id="usd-buy-result">00.00AOA</span>
+        <label for="brl-buy-input"><br>BRL:</label>
+        <input type="number" id="brl-buy-input" placeholder="Digite aqui" step="0.01" min="0" />
+        <span id="brl-buy-result">00.00AOA</span>
     </div>
 
     <div class="numeric-input-container">
-        <label for="brl-input">BRL:</label>
-        <input type="number" id="brl-input" placeholder="Digite aqui" step="0.01" min="0" />
-        <span id="brl-result">00.00AOA</span>
-        <label for="brl-buy-input">BRL:</label>
-        <input type="number" id="brl-buy-input" placeholder="Digite aqui" step="0.01" min="0" />
-        <span id="brl-buy-result">00.00AOA</span>
+        
     </div>
     
     <script>
