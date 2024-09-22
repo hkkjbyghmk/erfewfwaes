@@ -337,23 +337,36 @@
             const inputContainer = document.querySelector('.input-container');
             const code = prompt("Digite o código para desocultar os campos de entrada:");
             
-            // Verifica se o código está correto
-            if (code === '7851') {
-                // Exibe as seções de entrada
-                inputSection.style.display = 'block';
-                inputContainer.style.display = 'block';
-                
-                document.getElementById('toggle-code').textContent = 'Administrador'; // Exibe **** no botão
+            fetch('/check_code', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ code: code }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Exibe as seções de entrada
+                    inputSection.style.display = 'block';
+                    inputContainer.style.display = 'block';
 
-                // Define um temporizador para ocultar os campos após 10 segundos (10000 milissegundos)
-                setTimeout(() => {
-                    inputSection.style.display = 'none'; // Oculta a .input-section
-                    inputContainer.style.display = 'none'; // Oculta a .input-container
-                    document.getElementById('toggle-code').textContent = 'Administrador'; // Restaura o texto do botão
-                }, 10000); // 10 segundos em milissegundos
-            } else {
-                alert("Código incorreto!");
-            }
+                    document.getElementById('toggle-code').textContent = 'Administrador'; // Exibe **** no botão
+
+                    // Define um temporizador para ocultar os campos após 10 segundos (10000 milissegundos)
+                    setTimeout(() => {
+                        inputSection.style.display = 'none'; // Oculta a .input-section
+                        inputContainer.style.display = 'none'; // Oculta a .input-container
+                        document.getElementById('toggle-code').textContent = 'Administrador'; // Restaura o texto do botão
+                    }, 10000); // 10 segundos em milissegundos
+                } else {
+                    alert("Código incorreto!");
+                }
+            })
+            .catch(error => {
+                console.error("Erro ao verificar o código:", error);
+                alert("Ocorreu um erro ao tentar verificar o código.");
+            });
         }
 
         function updateEurValue() {
