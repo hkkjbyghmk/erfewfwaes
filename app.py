@@ -1,4 +1,4 @@
-from flask import *
+from flask import Flask, request, jsonify, send_from_directory
 import os
 
 app = Flask(__name__)
@@ -18,13 +18,23 @@ def get_config():
 
 @app.route('/check_code', methods=['POST'])
 def check_code():
-    data = request.get_json()
-    code = data.get('code')
+    # Verifique se a requisição é do tipo POST
+    if request.method == 'POST':
+        # Tente capturar o JSON da requisição
+        data = request.get_json()
 
-    if code == ADMIN_CODE:
-        return jsonify({"status": "success", "message": "Código correto"})
+        # Verifica se o campo 'code' foi enviado na requisição
+        if not data or 'code' not in data:
+            return jsonify({"status": "failure", "message": "Código não fornecido"}), 400
+
+        # Obtém o código enviado e verifica
+        code = data.get('code')
+        if code == ADMIN_CODE:
+            return jsonify({"status": "success", "message": "Código correto"})
+        else:
+            return jsonify({"status": "failure", "message": "Código incorreto"})
     else:
-        return jsonify({"status": "failure", "message": "Código incorreto"})
+        return jsonify({"status": "failure", "message": "Método não permitido"}), 405
 
 @app.route('/')
 def serve_index():
