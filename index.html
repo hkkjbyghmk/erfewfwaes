@@ -2,11 +2,11 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link rel="icon" href="https://images2.imgbox.com/1e/08/nLeuXViC_o.png" type="image/png">
-    <link rel="apple-touch-icon" href="https://images2.imgbox.com/1e/08/nLeuXViC_o.png">
+    
     <title>Conversor de Moedas</title>
     <style>
         fieldset {
@@ -435,8 +435,33 @@
             setInterval(() => location.reload(), 1800000); // Atualiza a página a cada 30 minutos
         };
     </script>
-</head>
 
+    <script>
+        // Manifesto como JSON
+        const manifest = {
+            name: "EURO SHARK",
+            short_name: "App",
+            start_url: "/",
+            display: "standalone",
+            icons: [
+                {
+                    src: "https://images2.imgbox.com/1e/08/nLeuXViC_o.png", // Altere para o caminho do seu ícone
+                    sizes: "192x192",
+                    type: "image/png"
+                }
+            ],
+            background_color: "#ffffff",
+            theme_color: "#000000"
+        };
+        // Salvar o manifesto no navegador
+        const blob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        document.querySelector('link[rel="manifest"]').setAttribute('href', url);
+    </script>
+
+
+
+</head>
 
 <body>
 <div class="container">
