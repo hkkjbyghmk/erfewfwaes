@@ -207,59 +207,62 @@
             color: #ffffff
         }
 
-	/* Media Queries for Responsiveness */
-	@media (max-width: 768px) {
-		.currency-input-wrapper {
-            flex-direction: column;
-		.clock,
-		.timer {
-			position: static;
-			text-align: center;
-			margin-bottom: 10px;
+		/* Estilos para telas menores (smartphones) */
+		@media (max-width: 768px) {
+			.tables-container {
+				flex-direction: column; /* Coloca as tabelas uma abaixo da outra */
+				gap: 10px;
+			}
+
+			table {
+				width: 100%; /* Faz com que as tabelas ocupem toda a largura da tela */
+				font-size: 14px; /* Reduz o tamanho da fonte para telas menores */
+				overflow-x: auto; /* Permite rolar horizontalmente se for necessário */
+			}
+
+			th, td {
+				padding: 8px;
+				font-size: 14px;
+			}
+
+			/* Ajusta o logotipo para ser responsivo */
+			.logo-image {
+				width: 30%; /* Reduz o tamanho do logotipo em telas menores */
+			}
+
+			/* Responsividade para o relógio e temporizador */
+			.clock, .timer {
+				font-size: 16px;
+				text-align: center;
+			}
 		}
 
-		h1 {
-			font-size: 20px;
-		}
+		@media (max-width: 480px) {
+			table {
+				width: 100%; /* Ocupar 100% da tela */
+				font-size: 12px; /* Ainda menor o texto em telas muito pequenas */
+				overflow-x: auto; /* Se necessário, adiciona rolagem horizontal */
+			}
 
-		.tables-container {
-			flex-direction: column;
-			gap: 10px;
-		}
+			th, td {
+				padding: 6px; /* Diminui o espaçamento das células da tabela */
+				font-size: 12px; /* Ajuste adicional para fonte */
+			}
 
-		.toggle-button {
-			font-size: 14px;
-			padding: 6px 10px;
-		}
+			/* Ajuste o tamanho do logotipo */
+			.logo-image {
+				width: 50%; /* Tamanho ajustado para telas muito pequenas */
+			}
 
-		.input-container input {
-			width: 100%;
-			margin-bottom: 10px;
-		}
+			/* Relógio e temporizador */
+			.clock {
+				font-size: 14px; /* Diminuir o tamanho da fonte para relógio */
+			}
 
-		.input-container button {
-			width: 100%;
+			.timer {
+				font-size: 12px;
+			}
 		}
-	}
-
-	@media (max-width: 480px) {
-		.clock {
-			font-size: 16px;
-		}
-
-		.timer {
-			font-size: 12px;
-		}
-
-		th, td {
-			padding: 8px;
-			font-size: 14px;
-		}
-
-		.numeric-input-container label {
-			margin-left: 0; /* Adjust label margin */
-		}
-	}
 
         
     </style>
