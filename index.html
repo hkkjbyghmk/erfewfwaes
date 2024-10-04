@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">>_ Leonel Smith Fragoso ₿ 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link rel="icon" href="https://images2.imgbox.com/1e/08/nLeuXViC_o.png" type="image/png">
@@ -107,7 +107,7 @@
         }
         h1 {
             text-align: center;
-            font-size: 24px;
+            font-size: 15px;
             margin-bottom: 15px;
             color: #ffffff;
         }
@@ -206,6 +206,14 @@
             margin-left: 155px;
             color: #ffffff
         }
+		
+		function copyText(id) {
+		  var copyText = document.getElementById(id);
+		  copyText.select();
+		  copyText.setSelectionRange(0, 99999); // Para dispositivos móveis
+		  document.execCommand("copy");
+		  alert("Copiado: " + copyText.value);
+		}
 
 		/* Estilos para telas menores (smartphones) */
 		@media (max-width: 768px) {
@@ -413,6 +421,17 @@
                 document.getElementById('brl-sale-result').textContent = '-- AOA';
             }
         }
+		
+		
+		function copyText(id) {
+		  var copyText = document.getElementById(id);
+		  copyText.select();
+		  copyText.setSelectionRange(0, 99999); // For mobile devices
+		  document.execCommand("copy");
+		  alert("Copiado: " + copyText.value);
+		}
+				
+		
 
         window.onload = function() {
             fetchExchangeRates();
@@ -603,6 +622,31 @@
     
 
     <div class="numeric-input-container">
+	
+	
+	
+	<h1 style="display: flex; justify-content: none; align-items: center;">
+	  <span>IBAN BAI: AO06 0040 0000 8477 7328 1017 0</span>
+	  <img src="https://img.icons8.com/?size=100&id=ug55vdu3tw29&format=png&color=000000" 
+		   alt="Copy Icon" 
+		   style="width: 22px; cursor: pointer;"
+		   onclick="copyText('account-number')">
+	</h1>
+
+	<h1 style="display: flex; justify-content: none; align-items: center;">
+	  <span>Leonel S. Fragoso</span>
+	  <img src="https://img.icons8.com/?size=100&id=ug55vdu3tw29&format=png&color=000000"
+		   alt="Copy Icon" 
+		   style="width: 22px; cursor: pointer;"
+		   onclick="copyText('account-name')">
+	</h1>
+
+	<!-- Hidden inputs for copy functionality -->
+	<input type="text" value="AO06 0040 0000 8477 7328 1017 0" id="account-number" style="position: absolute; left: -9999px;">
+	<input type="text" value="Leonel Smith Fragoso" id="account-name" style="position: absolute; left: -9999px;">
+
+
+
         
     </div>
 
